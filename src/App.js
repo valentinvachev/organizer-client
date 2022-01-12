@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { AppContextProvider, initialState } from './context/AppContent';
+import HomePage from './components/HomePage';
+import { useCallback, useState } from 'react';
+import './App.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+const App = () => {
+    const [stateValue, setStateValue] = useState(initialState);
+
+    const changeAppState = useCallback((newState) => {
+        setStateValue((oldState) => {
+            return {
+                ...oldState,
+                ...newState,
+            };
+        });
+    }, []);
+
+    return (
+        <AppContextProvider
+            value={{
+                appState: stateValue,
+                changeAppState,
+            }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+            <div className='application'>
+                <HomePage />
+            </div>
+        </AppContextProvider>
+    );
+};
 
 export default App;
