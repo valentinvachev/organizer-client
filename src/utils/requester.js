@@ -1,4 +1,4 @@
-import { server } from '../constants/constants';
+import server from '../constants/constants';
 
 export const requester = async (method, endPoint, body) => {
     const headers = { 'Content-Type': 'application/json' };
@@ -8,19 +8,19 @@ export const requester = async (method, endPoint, body) => {
         headers,
     };
 
-    if (method !== 'GET') {
+    if (method !== 'GET' && method !== 'DELETE') {
         requestOptions.body = JSON.stringify(body);
     }
 
     const response = await fetch(`${server}/${endPoint}`, requestOptions);
-
-    // if (!response.ok) {
-    //     const errorToThrow = { code: response.status };
-    //     const data = await response.json();
-    //     errorToThrow.message = data.message;
-    //     throw errorToThrow;
-    // }
-
     const dataResponse = await response.json();
+
+    if (!response.ok) {
+        const errorToThrow = { code: response.status };
+        errorToThrow.message = dataResponse.message || dataResponse.error;
+        errorToThrow.url = dataResponse.url;
+        throw errorToThrow;
+    }
+
     return dataResponse;
 };

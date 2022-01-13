@@ -1,13 +1,21 @@
-import { AppContextProvider, initialState } from './context/AppContent';
+import { AppContextProvider, appInitialState } from './context/AppContext';
+import {
+    NotificationContextProvider,
+    notificationInitialState,
+} from './context/NotificationContext';
 import HomePage from './components/HomePage';
+import Notification from './components/Notification';
 import { useCallback, useState } from 'react';
 import './App.scss';
 
 const App = () => {
-    const [stateValue, setStateValue] = useState(initialState);
+    const [appState, setAppState] = useState(appInitialState);
+    const [notificationState, setNotificationState] = useState(
+        notificationInitialState
+    );
 
     const changeAppState = useCallback((newState) => {
-        setStateValue((oldState) => {
+        setAppState((oldState) => {
             return {
                 ...oldState,
                 ...newState,
@@ -15,17 +23,26 @@ const App = () => {
         });
     }, []);
 
+    const changeNotificationState = useCallback((message, type) => {
+        setNotificationState({ message, type });
+    }, []);
+
     return (
-        <AppContextProvider
-            value={{
-                appState: stateValue,
-                changeAppState,
-            }}
+        <NotificationContextProvider
+            value={{ notificationState, changeNotificationState }}
         >
-            <div className='application'>
-                <HomePage />
-            </div>
-        </AppContextProvider>
+            <AppContextProvider
+                value={{
+                    appState,
+                    changeAppState,
+                }}
+            >
+                <div className='application'>
+                    <Notification />
+                    <HomePage />
+                </div>
+            </AppContextProvider>
+        </NotificationContextProvider>
     );
 };
 

@@ -1,0 +1,63 @@
+.weather-display-wrapper {
+    height: 250px;
+    width: 250px;
+    border-radius: 5px;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        cursor: default;
+    }
+
+    .weather-display {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .weather-display-city {
+        font-size: 22px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .weather-display-temperature {
+        font-size: 60px;
+        line-height: 45px;
+        margin-bottom: 10px;
+        display: inline-block;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 12px;
+            border: 1px solid black;
+            background: transparent;
+            border-radius: 50%;
+            position: absolute;
+            top: 0px;
+            right: -15px;
+        }
+    }
+
+    .weather-display-temperature-negative {
+        &::before {
+            content: '';
+            display: block;
+            width: 14px;
+            height: 5px;
+            background: black;
+            position: absolute;
+            top: 50%;
+            left: -15px;
+        }
+    }
+}

@@ -1,3 +1,5 @@
-export const constants = {
-    server: 'http://localhost:8080',
+const constants = {
+    server: 'http://localhost:8080/api',
 };
+
+export default constants.server;
