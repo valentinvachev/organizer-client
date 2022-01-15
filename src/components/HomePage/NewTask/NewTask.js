@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import AppContext from '../../../context/AppContext';
 import NotificationContext from '../../../context/NotificationContext';
 import { requester } from '../../../utils/requester';
-import { validateTaskName } from '../../../utils/validator';
+import { validateItemName } from '../../../utils/validator';
 import './NewTask.scss';
 
 const NewTask = () => {
@@ -12,7 +12,7 @@ const NewTask = () => {
 
     const postNewTask = async () => {
         try {
-            validateTaskName(inputValue);
+            validateItemName(inputValue);
 
             const { created } = await requester('POST', 'tasks', {
                 name: inputValue.trim(),

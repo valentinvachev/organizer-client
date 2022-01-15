@@ -2,7 +2,7 @@ import { useContext, useRef, useState } from 'react';
 import { requester } from '../../../utils/requester';
 import AppContext from '../../../context/AppContext';
 import NotificationContext from '../../../context/NotificationContext';
-import { validateTaskName } from '../../../utils/validator';
+import { validateItemName } from '../../../utils/validator';
 import './SingleActiveTask.scss';
 
 const SingleActiveTask = ({ textContent, taskId }) => {
@@ -29,7 +29,7 @@ const SingleActiveTask = ({ textContent, taskId }) => {
 
     const patchTaskById = async () => {
         try {
-            validateTaskName(inputValue);
+            validateItemName(inputValue);
 
             const { edited } = await requester('PATCH', `tasks/${taskId}`, {
                 name: inputValue,
@@ -61,7 +61,7 @@ const SingleActiveTask = ({ textContent, taskId }) => {
         setEditMode(true);
 
         if (!isEditMode) {
-            ref.current.blur();
+            ref.current.select();
         }
     };
 

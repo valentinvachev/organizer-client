@@ -6,7 +6,6 @@ import {
 import HomePage from './components/HomePage';
 import Notification from './components/Notification';
 import { useCallback, useState } from 'react';
-import './App.scss';
 
 const App = () => {
     const [appState, setAppState] = useState(appInitialState);

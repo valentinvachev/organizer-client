@@ -1,11 +1,11 @@
-export const validateTaskName = (name) => {
+export const validateItemName = (name) => {
     if (!name.length) {
         throw {
-            message: 'Task name can not be empty',
+            message: 'Item name can not be empty',
         };
     } else if (name.length < 2 || name.length > 250) {
         throw {
-            message: 'Task name should be between 2 and 250 symbols',
+            message: 'Item name must be between 2 and 250 characters',
         };
     }
 };

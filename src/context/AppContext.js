@@ -6,7 +6,7 @@ const AppContext = React.createContext({
 });
 
 export const appInitialState = {
-    tasks: [],
+    items: [],
     weather: {
         city: '',
         temperature: 0,
