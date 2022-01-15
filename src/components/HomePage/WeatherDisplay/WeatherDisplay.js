@@ -11,6 +11,7 @@ const WeatherDisplay = () => {
 
     useEffect(() => {
         setLoading(true);
+
         const getWeatherInfo = async () => {
             try {
                 // const weatherData = await requester(
@@ -24,6 +25,7 @@ const WeatherDisplay = () => {
                 //         temperature: Math.round(weatherData.temperature),
                 //     },
                 // });
+
                 setLoading(false);
             } catch (e) {
                 setLoading(false);
@@ -32,7 +34,11 @@ const WeatherDisplay = () => {
         };
 
         getWeatherInfo();
-    }, []);
+
+        const interval = setInterval(() => getWeatherInfo(), 1000 * 60 * 5);
+
+        return () => clearInterval(interval);
+    }, [changeAppState, changeNotificationState]);
 
     return (
         <div className='weather-display-wrapper'>

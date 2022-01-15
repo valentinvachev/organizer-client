@@ -12,20 +12,20 @@
     display: flex;
     justify-content: space-between;
 
-    .home-page-tasks-wrapper {
+    .home-page-items-wrapper {
         width: 680px;
     }
 
-    .single-task-wrapper {
+    .single-item-wrapper {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .single-task {
+    .single-item {
         height: 40px;
-        padding: 0px 120px;
+        padding: 0px 100px;
         background-color: antiquewhite;
         caret-color: gray;
         border: 3px solid rgb(165, 161, 245);
@@ -35,21 +35,27 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+
         &::selection {
             color: black;
         }
 
-        &.single-task-editable {
+        &.single-item-editable {
             border-color: rgb(58, 197, 58);
             background-color: white;
             cursor: text;
+
             &::selection {
                 background-color: rgba(255, 165, 0, 0.4);
+            }
+
+            &:focus::placeholder {
+                color: transparent;
             }
         }
     }
 
-    .single-task-button {
+    .single-item-button {
         background-color: gray;
         color: antiquewhite;
         height: 30px;

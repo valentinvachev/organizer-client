@@ -1,12 +1,12 @@
-.single-task-wrapper {
-    .single-task-active {
+.single-item-wrapper {
+    .single-todo-item {
         width: 580px;
         &:hover {
             cursor: pointer;
         }
     }
 
-    .single-task-active-remove {
+    .single-todo-item-remove {
         position: relative;
 
         &::before,
@@ -27,7 +27,7 @@
         }
     }
 
-    .single-task-active-approve {
+    .single-todo-item-approve {
         &::after {
             content: '';
             display: block;

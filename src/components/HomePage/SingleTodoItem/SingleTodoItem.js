@@ -3,47 +3,47 @@ import { requester } from '../../../utils/requester';
 import AppContext from '../../../context/AppContext';
 import NotificationContext from '../../../context/NotificationContext';
 import { validateItemName } from '../../../utils/validator';
-import './SingleActiveTask.scss';
+import './SingleTodoItem.scss';
 
-const SingleActiveTask = ({ textContent, taskId }) => {
+const SingleTodoItem = ({ textContent, itemId }) => {
     const { appState, changeAppState } = useContext(AppContext);
     const { changeNotificationState } = useContext(NotificationContext);
     const [inputValue, setInputValue] = useState(textContent);
     const [isEditMode, setEditMode] = useState(false);
     const ref = useRef(null);
 
-    const deleteTaskById = async () => {
+    const deleteItemById = async () => {
         try {
             const { deleted: deletedId } = await requester(
                 'DELETE',
-                `tasks/${taskId}`
+                `items/${itemId}`
             );
 
             changeAppState({
-                tasks: appState.tasks.filter((t) => t.id !== deletedId),
+                items: appState.items.filter((i) => i.id !== deletedId),
             });
         } catch (e) {
             changeNotificationState(e.message, 'error');
         }
     };
 
-    const patchTaskById = async () => {
+    const patchItemById = async () => {
         try {
             validateItemName(inputValue);
 
-            const { edited } = await requester('PATCH', `tasks/${taskId}`, {
+            const { edited } = await requester('PATCH', `items/${itemId}`, {
                 name: inputValue,
             });
 
-            const tasksEdited = appState.tasks.map((t) => {
-                if (t.id === Number(edited.id)) {
-                    t.name = inputValue;
+            const itemsEdited = appState.items.map((i) => {
+                if (i.id === Number(edited.id)) {
+                    i.name = inputValue;
                 }
-                return t;
+                return i;
             });
 
             changeAppState({
-                tasks: tasksEdited,
+                items: itemsEdited,
             });
 
             setEditMode(false);
@@ -66,11 +66,11 @@ const SingleActiveTask = ({ textContent, taskId }) => {
     };
 
     return (
-        <div className='single-task-wrapper'>
+        <div className='single-item-wrapper'>
             <input
                 ref={ref}
-                className={`single-task single-task-active ${
-                    isEditMode ? 'single-task-editable' : ''
+                className={`single-item single-todo-item ${
+                    isEditMode ? 'single-item-editable' : ''
                 }`}
                 type='text'
                 value={inputValue}
@@ -80,17 +80,17 @@ const SingleActiveTask = ({ textContent, taskId }) => {
             />
             {isEditMode ? (
                 <button
-                    className='single-task-button single-task-active-approve'
-                    onClick={patchTaskById}
+                    className='single-item-button single-todo-item-approve'
+                    onClick={patchItemById}
                 />
             ) : (
                 <button
-                    className='single-task-button single-task-active-remove'
-                    onClick={deleteTaskById}
+                    className='single-item-button single-todo-item-remove'
+                    onClick={deleteItemById}
                 />
             )}
         </div>
     );
 };
 
-export default SingleActiveTask;
+export default SingleTodoItem;

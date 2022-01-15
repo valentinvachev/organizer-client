@@ -1,4 +1,4 @@
-.active-tasks-wrapper {
+.todo-items-wrapper {
     height: 500px;
     margin-bottom: 20px;
     padding: 25px;
@@ -31,8 +31,8 @@
 
     -ms-overflow-style: none;
 
-    .active-task-empty-state,
-    .active-task-loading-state {
+    .todo-items-empty-state,
+    .todo-items-loading-state {
         text-align: center;
     }
 }

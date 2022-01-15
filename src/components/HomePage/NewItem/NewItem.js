@@ -3,24 +3,24 @@ import AppContext from '../../../context/AppContext';
 import NotificationContext from '../../../context/NotificationContext';
 import { requester } from '../../../utils/requester';
 import { validateItemName } from '../../../utils/validator';
-import './NewTask.scss';
+import './NewItem.scss';
 
-const NewTask = () => {
+const NewItem = () => {
     const { appState, changeAppState } = useContext(AppContext);
     const { changeNotificationState } = useContext(NotificationContext);
     const [inputValue, setInputValue] = useState('');
 
-    const postNewTask = async () => {
+    const postNewItem = async () => {
         try {
             validateItemName(inputValue);
 
-            const { created } = await requester('POST', 'tasks', {
+            const { created } = await requester('POST', 'items', {
                 name: inputValue.trim(),
             });
 
             changeAppState({
-                tasks: [
-                    ...appState.tasks,
+                items: [
+                    ...appState.items,
                     {
                         ...created,
                         id: Number(created.id),
@@ -40,19 +40,20 @@ const NewTask = () => {
     };
 
     return (
-        <div className='new-task-wrapper single-task-wrapper'>
+        <div className='new-item-wrapper single-item-wrapper'>
             <input
-                className='single-task single-task-editable single-task-new'
+                className='single-item single-item-editable single-item-new'
                 type='text'
                 value={inputValue}
                 onChange={handleNewValue}
+                placeholder='Add new to-do item'
             />
             <button
-                className='single-task-button single-task-new-add'
-                onClick={postNewTask}
+                className='single-item-button single-item-new-add'
+                onClick={postNewItem}
             />
         </div>
     );
 };
 
-export default NewTask;
+export default NewItem;
