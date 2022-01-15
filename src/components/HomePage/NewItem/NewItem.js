@@ -3,7 +3,7 @@ import AppContext from '../../../context/AppContext';
 import NotificationContext from '../../../context/NotificationContext';
 import { requester } from '../../../utils/requester';
 import { validateItemName } from '../../../utils/validator';
-import CustomButton from '../CustomButton/CustomButton';
+import CustomButton from '../CustomButton';
 import './NewItem.scss';
 
 const NewItem = () => {

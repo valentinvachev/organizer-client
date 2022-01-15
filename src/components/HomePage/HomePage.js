@@ -7,7 +7,7 @@ const HomePage = () => {
     return (
         <div className='home-page-wrapper'>
             <div className='home-page-items-wrapper'>
-                <TodoItems/>
+                <TodoItems />
                 <NewItem />
             </div>
             <div className='home-page-weather-wrapper'>

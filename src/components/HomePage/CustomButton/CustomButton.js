@@ -1,6 +1,6 @@
 import './CustomButton.scss';
 
-const CustomButton = ({className, onClick}) => {
+const CustomButton = ({ className, onClick }) => {
     return <button className={className} onClick={onClick} />;
 };
 

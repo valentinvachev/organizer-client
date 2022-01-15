@@ -3,9 +3,8 @@ import { requester } from '../../../utils/requester';
 import AppContext from '../../../context/AppContext';
 import NotificationContext from '../../../context/NotificationContext';
 import { validateItemName } from '../../../utils/validator';
-import CustomButton from '../CustomButton/CustomButton';
+import CustomButton from '../CustomButton';
 import './SingleTodoItem.scss';
-
 
 const SingleTodoItem = ({ textContent, itemId }) => {
     const { appState, changeAppState } = useContext(AppContext);
