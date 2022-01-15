@@ -14,17 +14,17 @@ const WeatherDisplay = () => {
 
         const getWeatherInfo = async () => {
             try {
-                // const weatherData = await requester(
-                //     'GET',
-                //     'weather?city=Sofia'
-                // );
+                const weatherData = await requester(
+                    'GET',
+                    'weather?city=Sofia'
+                );
 
-                // changeAppState({
-                //     weather: {
-                //         ...weatherData,
-                //         temperature: Math.round(weatherData.temperature),
-                //     },
-                // });
+                changeAppState({
+                    weather: {
+                        ...weatherData,
+                        temperature: Math.round(weatherData.temperature),
+                    },
+                });
 
                 setLoading(false);
             } catch (e) {

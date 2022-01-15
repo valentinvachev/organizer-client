@@ -3,14 +3,19 @@
     min-height: 600px;
     margin: 50px auto;
     padding: 20px;
-    background: linear-gradient(
-        285deg,
-        rgb(165, 161, 245) 0%,
-        rgb(214, 224, 235) 80%
-    );
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
+    background-image: url('./assets/cork-background.jpg');
+    position: relative;
+
+    .pin-image {
+        position: absolute;
+        top: -20px;
+        left: 0px;
+        height: 60px;
+        width: 60px;
+    }
 
     .home-page-items-wrapper {
         width: 680px;
