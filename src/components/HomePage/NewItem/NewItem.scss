@@ -4,27 +4,4 @@
     .single-item-new {
         width: 605px;
     }
-
-    .single-item-button.single-item-new-add {
-        position: relative;
-        background-color: #ffa500;
-
-        &:hover {
-            cursor: pointer;
-            background-color: #eeb600;
-        }
-
-        &::before,
-        &::after {
-            position: absolute;
-            content: '';
-            width: 20px;
-            height: 4px;
-            background-color: antiquewhite;
-        }
-
-        &::after {
-            transform: rotate(90deg);
-        }
-    }
 }

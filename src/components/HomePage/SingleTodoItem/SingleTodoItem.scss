@@ -5,38 +5,4 @@
             cursor: pointer;
         }
     }
-
-    .single-todo-item-remove {
-        position: relative;
-
-        &::before,
-        &::after {
-            position: absolute;
-            content: '';
-            width: 20px;
-            height: 4px;
-            background-color: antiquewhite;
-        }
-
-        &::before {
-            transform: rotate(45deg);
-        }
-
-        &::after {
-            transform: rotate(-45deg);
-        }
-    }
-
-    .single-todo-item-approve {
-        &::after {
-            content: '';
-            display: block;
-            transform: rotate(35deg);
-            height: 18px;
-            width: 12px;
-            border-bottom: 5px solid rgb(58, 197, 58);
-            border-right: 5px solid rgb(58, 197, 58);
-            margin-bottom: 3px;
-        }
-    }
 }

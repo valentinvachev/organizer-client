@@ -3,6 +3,7 @@ import AppContext from '../../../context/AppContext';
 import NotificationContext from '../../../context/NotificationContext';
 import { requester } from '../../../utils/requester';
 import { validateItemName } from '../../../utils/validator';
+import CustomButton from '../CustomButton/CustomButton';
 import './NewItem.scss';
 
 const NewItem = () => {
@@ -48,8 +49,8 @@ const NewItem = () => {
                 onChange={handleNewValue}
                 placeholder='Add new to-do item'
             />
-            <button
-                className='single-item-button single-item-new-add'
+            <CustomButton
+                className='single-item-button single-item-new-add button-lines'
                 onClick={postNewItem}
             />
         </div>

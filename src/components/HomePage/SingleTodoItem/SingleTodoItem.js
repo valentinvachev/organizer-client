@@ -3,7 +3,9 @@ import { requester } from '../../../utils/requester';
 import AppContext from '../../../context/AppContext';
 import NotificationContext from '../../../context/NotificationContext';
 import { validateItemName } from '../../../utils/validator';
+import CustomButton from '../CustomButton/CustomButton';
 import './SingleTodoItem.scss';
+
 
 const SingleTodoItem = ({ textContent, itemId }) => {
     const { appState, changeAppState } = useContext(AppContext);
@@ -31,13 +33,15 @@ const SingleTodoItem = ({ textContent, itemId }) => {
         try {
             validateItemName(inputValue);
 
+            const inputValueTrimmed = inputValue.trim();
+
             const { edited } = await requester('PATCH', `items/${itemId}`, {
-                name: inputValue,
+                name: inputValueTrimmed,
             });
 
             const itemsEdited = appState.items.map((i) => {
                 if (i.id === Number(edited.id)) {
-                    i.name = inputValue;
+                    i.name = inputValueTrimmed;
                 }
                 return i;
             });
@@ -45,6 +49,8 @@ const SingleTodoItem = ({ textContent, itemId }) => {
             changeAppState({
                 items: itemsEdited,
             });
+
+            setInputValue(inputValueTrimmed);
 
             setEditMode(false);
         } catch (e) {
@@ -79,13 +85,13 @@ const SingleTodoItem = ({ textContent, itemId }) => {
                 onDoubleClick={handleDoubleClick}
             />
             {isEditMode ? (
-                <button
+                <CustomButton
                     className='single-item-button single-todo-item-approve'
                     onClick={patchItemById}
                 />
             ) : (
-                <button
-                    className='single-item-button single-todo-item-remove'
+                <CustomButton
+                    className='single-item-button single-todo-item-remove button-lines'
                     onClick={deleteItemById}
                 />
             )}

@@ -54,21 +54,4 @@
             }
         }
     }
-
-    .single-item-button {
-        background-color: gray;
-        color: antiquewhite;
-        height: 30px;
-        width: 30px;
-        border-radius: 50%;
-        border: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &:hover {
-            cursor: pointer;
-            background-color: rgb(78, 78, 78);
-        }
-    }
 }

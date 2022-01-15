@@ -1,0 +1,65 @@
+.single-item-button {
+    background-color: gray;
+    color: antiquewhite;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(78, 78, 78);
+    }
+}
+
+.button-lines {
+    position: relative;
+
+    &::before,
+    &::after {
+        position: absolute;
+        content: '';
+        width: 20px;
+        height: 4px;
+        background-color: antiquewhite;
+    }
+}
+
+.single-todo-item-remove {
+    &::after {
+        transform: rotate(-45deg);
+    }
+
+    &::before {
+        transform: rotate(45deg);
+    }
+}
+
+.single-todo-item-approve {
+    &::after {
+        content: '';
+        display: block;
+        transform: rotate(35deg);
+        height: 18px;
+        width: 12px;
+        border-bottom: 5px solid rgb(58, 197, 58);
+        border-right: 5px solid rgb(58, 197, 58);
+        margin-bottom: 3px;
+    }
+}
+
+.single-item-button.single-item-new-add {
+    background-color: #ffa500;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #eeb600;
+    }
+
+    &::after {
+        transform: rotate(90deg);
+    }
+}

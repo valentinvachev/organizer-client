@@ -1,9 +1,11 @@
 export const validateItemName = (name) => {
-    if (!name.length) {
+    const nameTrimmed = name.trim();
+
+    if (!nameTrimmed.length) {
         throw {
             message: 'Item name can not be empty',
         };
-    } else if (name.length < 2 || name.length > 250) {
+    } else if (nameTrimmed.length < 2 || nameTrimmed.length > 250) {
         throw {
             message: 'Item name must be between 2 and 250 characters',
         };
