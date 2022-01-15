@@ -22,12 +22,12 @@
         font-size: 22px;
         width: 100%;
         text-align: center;
+        margin-top: 10px;
     }
 
     .weather-display-temperature {
         font-size: 60px;
         line-height: 45px;
-        margin-bottom: 10px;
         display: inline-block;
         position: relative;
         display: flex;
@@ -44,7 +44,7 @@
             border-radius: 50%;
             position: absolute;
             top: 0px;
-            right: -15px;
+            right: -18px;
         }
     }
 
@@ -57,7 +57,8 @@
             background-color: black;
             position: absolute;
             top: 50%;
-            left: -15px;
+            transform: translateY(-50%);
+            left: -18px;
         }
     }
 }
