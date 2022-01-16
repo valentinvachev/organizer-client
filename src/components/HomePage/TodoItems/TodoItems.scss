@@ -7,14 +7,14 @@
     flex-direction: column;
     background-color: rgba(255, 165, 0, 0.9);
 
+    @-moz-document url-prefix() {
+        overflow-y: scroll;
+        scrollbar-width: none;
+    }
+
     & > *:not(:last-child) {
         margin-bottom: 20px;
     }
-
-    scrollbar-face-color: black;
-    scrollbar-track-color: transparent;
-    scrollbar-color: black;
-    scrollbar-width: thin;
 
     &::-webkit-scrollbar {
         width: 5px;
