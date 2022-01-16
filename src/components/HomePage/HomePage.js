@@ -7,7 +7,8 @@ import './HomePage.scss';
 const HomePage = () => {
     return (
         <div className='home-page-wrapper'>
-            <img src={pin} alt='pin' className='pin-image' />
+            <img src={pin} alt='pin' className='pin-image pin-left' />
+            <img src={pin} alt='pin' className='pin-image pin-right' />
             <div className='home-page-items-wrapper'>
                 <TodoItems />
                 <NewItem />
